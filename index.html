@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRT - Windows Repair Tool | Reparador de Arquivos do Windows</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --secondary: #00a8e8;
+            --danger: #dc3545;
+            --success: #28a745;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .hero-image {
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background-color: rgba(0, 102, 204, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* How-to Section */
+        .how-to {
+            padding: 4rem 0;
+        }
+        
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+        }
+        
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Download Section */
+        .download {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .download h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .download p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+            padding: 15px 35px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 15px 35px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .logo {
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>MRT</h1>
+                        <p>Windows Repair Tool</p>
+                    </div>
+                </div>
+                <a href="#download" class="cta-button">
+                    <i class="fas fa-download"></i> Baixar Agora
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>O Reparador Definitivo para o Windows</h2>
+            <p>O MRT é a solução completa para reparar arquivos corrompidos do Windows, detectar ameaças de segurança e otimizar o desempenho do seu sistema com uma limpeza inteligente.</p>
+            
+            <div class="hero-image">
+                <div style="background-color: #2d3748; color: white; padding: 2rem; text-align: left; font-family: monospace;">
+                    <div style="margin-bottom: 1rem;">
+                        <span style="color: #4fd1c7;">MRT</span>
+                        <span style="color: #a0aec0;">> </span>
+                        <span>scan system</span>
+                    </div>
+                    <div style="margin-bottom: 1rem; padding-left: 1rem;">
+                        <span style="color: #68d391;">✓</span>
+                        <span> Verificando arquivos do sistema... [100%]</span>
+                    </div>
+                    <div style="margin-bottom: 1rem; padding-left: 1rem;">
+                        <span style="color: #68d391;">✓</span>
+                        <span> Reparando arquivos corrompidos... [15 arquivos reparados]</span>
+                    </div>
+                    <div style="margin-bottom: 1rem; padding-left: 1rem;">
+                        <span style="color: #68d391;">✓</span>
+                        <span> Varredura de malware... [Nenhuma ameaça encontrada]</span>
+                    </div>
+                    <div style="padding-left: 1rem;">
+                        <span style="color: #68d391;">✓</span>
+                        <span> Limpeza de sistema... [2.3 GB liberados]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Recursos Principais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>Reparação de Arquivos</h3>
+                    <p>Corrige automaticamente arquivos do Windows corrompidos ou quebrados, restaurando a estabilidade do sistema e prevenindo erros críticos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Detecção de Malware</h3>
+                    <p>Verifica seu sistema em busca de arquivos maliciosos, spyware, adware e outras ameaças à segurança, mantendo seus dados protegidos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3>Limpeza Inteligente</h3>
+                    <p>Remove arquivos temporários, cache desnecessário e lixo do sistema para liberar espaço em disco e melhorar o desempenho do PC.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How-to Section -->
+    <section class="how-to">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Baixe e Instale</h3>
+                        <p>Faça o download do MRT e execute o instalador. O processo é rápido e não requer configurações complexas.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Escaneamento Completo</h3>
+                        <p>Inicie o MRT e clique em "Verificar Sistema". A ferramenta analisará arquivos corrompidos, malware e itens para limpeza.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Reparação Automática</h3>
+                        <p>O MRT corrigirá automaticamente os problemas encontrados. Você pode revisar as ações antes de confirmar.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Sistema Otimizado</h3>
+                        <p>Após a conclusão, seu Windows estará mais estável, seguro e com melhor desempenho.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Dizem Nossos Usuários</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O MRT salvou meu computador! Depois de várias telas azuis, ele reparou os arquivos do sistema e agora meu PC funciona perfeitamente."</p>
+                    <p class="testimonial-author">- Carlos Silva, Analista de Sistemas</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finalmente uma ferramenta completa. Detectou um malware que meu antivírus não encontrou e ainda limpou 5GB de arquivos temporários."</p>
+                    <p class="testimonial-author">- Ana Costa, Estudante</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Uso no meu escritório com 10 computadores. Economizou horas de trabalho técnico e mantém todos os sistemas funcionando sem problemas."</p>
+                    <p class="testimonial-author">- Ricardo Oliveira, Gerente de TI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2>Pronto para Otimizar seu Windows?</h2>
+            <p>Baixe agora o MRT e tenha um sistema mais rápido, seguro e estável. Totalmente compatível com Windows 10 e 11.</p>
+            
+            <div class="download-buttons">
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-download"></i> Baixar Versão 2.1 (45 MB)
+                </a>
+                <a href="#" class="btn-secondary">
+                    <i class="fas fa-book"></i> Ver Manual do Usuário
+                </a>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">Requisitos: Windows 10/11, 2GB de RAM, 100MB de espaço livre</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MRT</h3>
+                    <p>Windows Repair Tool</p>
+                    <p>A solução completa para reparar, proteger e otimizar seu sistema Windows.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="#">Home</a>
+                    <a href="#">Recursos</a>
+                    <a href="#">Download</a>
+                    <a href="#">Suporte</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>suporte@mrt-tool.com</p>
+                    <p>FAQ & Central de Ajuda</p>
+                    <p>Política de Privacidade</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Compatibilidade</h3>
+                    <p>Windows 10</p>
+                    <p>Windows 11</p>
+                    <p>Windows Server 2019+</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MRT - Windows Repair Tool. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de rolagem suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Efeito de contador para estatísticas (apenas visual)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulação de contadores nos recursos
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
