@@ -12,17 +12,17 @@
             --dark-gray: #1a1a1a;
             --medium-gray: #2d2d2d;
             --light-gray: #3d3d3d;
-            --lighter-gray: #4d4d4d;
+            --white: #ffffff;
             --pale-gray: #e8e8e8;
-            
+
             --pink-primary: #e91e63;
             --pink-dark: #c2185b;
             --pink-light: #f48fb1;
             --pink-pale: #fce4ec;
-            
+
             --accent: #bb86fc;
             --accent-light: #d1b3ff;
-            
+
             --border-radius: 10px;
             --shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
             --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -41,7 +41,7 @@
             color: var(--pale-gray);
             line-height: 1.6;
             background-color: var(--black);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(233, 30, 99, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(233, 30, 99, 0.05) 0%, transparent 20%);
         }
@@ -116,7 +116,7 @@
         }
 
         .logo-text p {
-            color: var(--lighter-gray);
+            color: var(--white);
             font-size: 1rem;
             letter-spacing: 1px;
         }
@@ -192,7 +192,7 @@
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 3rem;
-            color: var(--lighter-gray);
+            color: var(--white);
         }
 
         .hero-image {
@@ -305,7 +305,7 @@
         }
 
         .feature-card p {
-            color: var(--lighter-gray);
+            color: var(--white);
         }
 
         /* How-to Section */
@@ -359,7 +359,7 @@
         }
 
         .step-content p {
-            color: var(--lighter-gray);
+            color: var(--white);
         }
 
         /* Testimonials */
@@ -431,7 +431,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 30%, rgba(233, 30, 99, 0.1) 0%, transparent 30%),
                 radial-gradient(circle at 80% 70%, rgba(233, 30, 99, 0.1) 0%, transparent 30%);
         }
@@ -543,7 +543,7 @@
 
         .footer-section p,
         .footer-section a {
-            color: var(--lighter-gray);
+            color: var(--white);
             margin-bottom: 0.8rem;
             display: block;
             text-decoration: none;
@@ -559,7 +559,7 @@
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid var(--medium-gray);
-            color: var(--lighter-gray);
+            color: var(--white);
             font-size: 0.9rem;
         }
 
@@ -693,262 +693,1059 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h2>O Reparador Definitivo para o Windows</h2>
-            <p>O MRT é a solução completa para reparar arquivos corrompidos do Windows, detectar ameaças de segurança e
-                otimizar o desempenho do seu sistema com uma limpeza inteligente.</p>
+    <style>
+        /* Variáveis de cores e efeitos atualizadas */
+        :root {
+            --black: #0a0a0a;
+            --dark-gray: #121212;
+            --medium-gray: #1e1e1e;
+            --light-gray: #2a2a2a;
+            --white: #ffffff;
+            --pale-gray: #e8e8e8;
 
-            <div class="hero-image">
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-title">MRT - Windows Repair Tool</div>
-                        <div class="terminal-controls">
-                            <div class="control close"></div>
-                            <div class="control minimize"></div>
-                            <div class="control maximize"></div>
+            --pink-primary: #ff2d75;
+            --pink-dark: #d4004e;
+            --pink-light: #ff5c9d;
+            --pink-pale: #ffa8cc;
+            --pink-glow: rgba(255, 45, 117, 0.6);
+
+            --accent: #9d4edd;
+            --accent-light: #c77dff;
+            --accent-glow: rgba(157, 78, 221, 0.5);
+
+            --neon-blue: #00f3ff;
+            --neon-green: #00ff9d;
+
+            --border-radius: 16px;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            --shadow-light: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --gradient: linear-gradient(135deg, var(--pink-primary), var(--accent));
+            --gradient-glow: linear-gradient(135deg, var(--pink-primary), var(--accent), var(--neon-blue));
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+            color: var(--pale-gray);
+            line-height: 1.6;
+            background-color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section - Totalmente Reestilizada */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 45, 117, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
+                linear-gradient(180deg, var(--black) 0%, var(--dark-gray) 100%);
+        }
+
+        /* Partículas animadas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gradient-glow);
+            animation: float 15s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(100px, 100px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(0, 200px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-100px, 100px) rotate(270deg);
+            }
+        }
+
+        /* Container principal */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Grid moderno tipo Apple */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Conteúdo textual */
+        .hero-content {
+            position: relative;
+        }
+
+        /* Badge premium */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 45, 117, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 45, 117, 0);
+            }
+        }
+
+        .badge i {
+            color: var(--pink-primary);
+            font-size: 1.2rem;
+        }
+
+        .badge span {
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* Título principal com efeito gradiente animado */
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg,
+                    var(--pink-primary),
+                    var(--accent),
+                    var(--neon-blue),
+                    var(--pink-primary));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Subtítulo */
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--pale-gray);
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        /* Stats modernos */
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--pink-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Botões com efeito glassmorphism */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .btn-hero-primary,
+        .btn-hero-secondary {
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero-primary {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 30px var(--pink-glow);
+        }
+
+        .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px var(--pink-glow);
+        }
+
+        .btn-hero-secondary:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--pink-primary);
+        }
+
+        /* Lado direito - Demonstração interativa */
+        .hero-demo {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        /* Container 3D */
+        .demo-container {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float3d 8s ease-in-out infinite;
+        }
+
+        @keyframes float3d {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+            }
+
+            66% {
+                transform: translateY(10px) rotateX(-5deg) rotateY(-5deg);
+            }
+        }
+
+        /* Mockup tipo MacBook */
+        .laptop-mockup {
+            width: 600px;
+            height: 400px;
+            background: var(--dark-gray);
+            border-radius: 20px;
+            position: relative;
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .laptop-mockup:hover {
+            transform: rotateY(-5deg) rotateX(0deg);
+        }
+
+        /* Barra superior do laptop */
+        .laptop-top {
+            height: 30px;
+            background: linear-gradient(180deg, #333, #222);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .camera {
+            width: 10px;
+            height: 10px;
+            background: #666;
+            border-radius: 50%;
+            position: absolute;
+            right: 20px;
+        }
+
+        /* Tela do laptop */
+        .laptop-screen {
+            height: calc(100% - 30px);
+            background: #0a0a0a;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Terminal avançado */
+        .advanced-terminal {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Cabeçalho do terminal */
+        .terminal-header {
+            background: linear-gradient(90deg, var(--dark-gray), var(--medium-gray));
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .terminal-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--pink-light);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .control.close {
+            background: #ff5f57;
+        }
+
+        .control.minimize {
+            background: #ffbd2e;
+        }
+
+        .control.maximize {
+            background: #28c940;
+        }
+
+        /* Conteúdo do terminal com animação */
+        .terminal-content {
+            padding: 25px;
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Linhas animadas */
+        .terminal-line {
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: typeIn 0.5s forwards;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terminal-line:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .terminal-line:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        .terminal-line:nth-child(3) {
+            animation-delay: 2.5s;
+        }
+
+        .terminal-line:nth-child(4) {
+            animation-delay: 3.5s;
+        }
+
+        .terminal-line:nth-child(5) {
+            animation-delay: 4.5s;
+        }
+
+        .terminal-line:nth-child(6) {
+            animation-delay: 5.5s;
+        }
+
+        @keyframes typeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .terminal-prompt {
+            color: var(--neon-green);
+            font-weight: bold;
+            min-width: 60px;
+        }
+
+        .terminal-text {
+            color: #e0e0e0;
+        }
+
+        .terminal-progress {
+            width: 200px;
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            animation: progressAnimation 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes progressAnimation {
+            to {
+                width: 100%;
+            }
+        }
+
+        .terminal-success {
+            color: var(--neon-green);
+            animation: pulseSuccess 2s infinite;
+        }
+
+        @keyframes pulseSuccess {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Efeitos de brilho */
+        .glow-effect {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--pink-glow) 0%, transparent 70%);
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: glowMove 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .laptop-mockup {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-hero-primary,
+            .btn-hero-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <!-- Hero Section -->
+        <section class="hero">
+            <!-- Partículas de fundo -->
+            <div class="particles" id="particles"></div>
+
+            <!-- Efeito de brilho -->
+            <div class="glow-effect" style="top: 20%; right: 15%;"></div>
+            <div class="glow-effect"
+                style="bottom: 30%; left: 10%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);">
+            </div>
+
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Conteúdo textual -->
+                    <div class="hero-content">
+                        <div class="badge">
+                            <i class="fas fa-star"></i>
+                            <span>NOVA VERSÃO 3.0</span>
+                        </div>
+
+                        <h1 class="hero-title">
+                            MRT
+                            <span style="display: block; font-size: 3rem; margin-top: 10px;">Windows Repair Tool</span>
+                        </h1>
+
+                        <p class="hero-subtitle">
+                            Apresentamos a próxima geração do reparador de sistemas Windows.
+                            Inteligência artificial avançada, detecção em tempo real e otimização
+                            automática para um desempenho incomparável.
+                        </p>
+
+                        <!-- Estatísticas impactantes -->
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-label">Taxa de reparo</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">2.5x</div>
+                                <div class="stat-label">Mais rápido</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">10M+</div>
+                                <div class="stat-label">Usuários</div>
+                            </div>
+                        </div>
+
+                        <!-- Botões de ação -->
+                        <div class="hero-buttons">
+                            <a href="#download" class="btn-hero-primary">
+                                <i class="fas fa-download"></i>
+                                Baixar Gratuitamente
+                            </a>
+                            <a href="#demo" class="btn-hero-secondary">
+                                <i class="fas fa-play-circle"></i>
+                                Ver Demonstração
+                            </a>
                         </div>
                     </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">MRT></span>
-                        <span class="terminal-text"> scan system --full</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-success">✓</span>
-                        <span class="terminal-text"> Verificando arquivos do sistema... [100%]</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-success">✓</span>
-                        <span class="terminal-text"> Reparando arquivos corrompidos... [15 arquivos reparados]</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-success">✓</span>
-                        <span class="terminal-text"> Varredura de malware... [Nenhuma ameaça encontrada]</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-success">✓</span>
-                        <span class="terminal-text"> Limpeza de sistema... [2.3 GB liberados]</span>
-                    </div>
-                    <div class="terminal-line" style="margin-top: 1.5rem;">
-                        <span class="terminal-prompt">MRT></span>
-                        <span class="terminal-text" style="color: var(--pink-light);"> Sistema otimizado com sucesso!</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Recursos Principais</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-medical"></i>
-                    </div>
-                    <h3>Reparação de Arquivos</h3>
-                    <p>Corrige automaticamente arquivos do Windows corrompidos ou quebrados, restaurando a estabilidade
-                        do sistema e prevenindo erros críticos.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Detecção de Malware</h3>
-                    <p>Verifica seu sistema em busca de arquivos maliciosos, spyware, adware e outras ameaças à
-                        segurança, mantendo seus dados protegidos.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-broom"></i>
-                    </div>
-                    <h3>Limpeza Inteligente</h3>
-                    <p>Remove arquivos temporários, cache desnecessário e lixo do sistema para liberar espaço em disco e
-                        melhorar o desempenho do PC.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How-to Section -->
-    <section class="how-to">
-        <div class="container">
-            <h2 class="section-title">Como Funciona</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Baixe e Instale</h3>
-                        <p>Faça o download do MRT e execute o instalador. O processo é rápido e não requer configurações
-                            complexas.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Escaneamento Completo</h3>
-                        <p>Inicie o MRT e clique em "Verificar Sistema". A ferramenta analisará arquivos corrompidos,
-                            malware e itens para limpeza.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Reparação Automática</h3>
-                        <p>O MRT corrigirá automaticamente os problemas encontrados. Você pode revisar as ações antes de
-                            confirmar.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Sistema Otimizado</h3>
-                        <p>Após a conclusão, seu Windows estará mais estável, seguro e com melhor desempenho.</p>
+                    <!-- Demonstração interativa -->
+                    <div class="hero-demo">
+                        <div class="demo-container">
+                            <!-- Mockup de laptop -->
+                            <div class="laptop-mockup">
+                                <div class="laptop-top">
+                                    <div class="camera"></div>
+                                </div>
+                                <div class="laptop-screen">
+                                    <!-- Terminal avançado -->
+                                    <div class="advanced-terminal">
+                                        <div class="terminal-header">
+                                            <div class="terminal-title">
+                                                <i class="fas fa-terminal"></i>
+                                                MRT v3.0 - AI Repair Console
+                                            </div>
+                                            <div class="terminal-controls">
+                                                <div class="control close"></div>
+                                                <div class="control minimize"></div>
+                                                <div class="control maximize"></div>
+                                            </div>
+                                        </div>
+                                        <div class="terminal-content">
+                                            <div class="terminal-line">
+                                                <span class="terminal-prompt">mrt@system:~$</span>
+                                                <span class="terminal-text">./start_ai_scan --deep</span>
+                                            </div>
+                                            <div class="terminal-line">
+                                                <span class="terminal-prompt">></span>
+                                                <span class="terminal-text">Inicializando IA de diagnóstico...</span>
+                                                <div class="terminal-progress">
+                                                    <div class="progress-bar"></div>
+                                                </div>
+                                            </div>
+                                            <div class="terminal-line">
+                                                <span class="terminal-success">✓</span>
+                                                <span class="terminal-text">Sistema analisado: 12.584 arquivos</span>
+                                            </div>
+                                            <div class="terminal-line">
+                                                <span class="terminal-success">✓</span>
+                                                <span class="terminal-text">23 arquivos corrompidos detectados</span>
+                                            </div>
+                                            <div class="terminal-line">
+                                                <span class="terminal-success">✓</span>
+                                                <span class="terminal-text">Reparação automática em andamento...</span>
+                                            </div>
+                                            <div class="terminal-line">
+                                                <span class="terminal-success">✨</span>
+                                                <span class="terminal-text"
+                                                    style="color: var(--pink-light); font-weight: bold;">
+                                                    Sistema otimizado com sucesso! Performance +215%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">O Que Dizem Nossos Usuários</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"O MRT salvou meu computador! Depois de várias telas azuis, ele reparou
-                        os arquivos do sistema e agora meu PC funciona perfeitamente."</p>
-                    <p class="testimonial-author">- Carlos Silva, Analista de Sistemas</p>
-                </div>
+        <script>
+            // Criar partículas dinâmicas
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 20;
 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Finalmente uma ferramenta completa. Detectou um malware que meu
-                        antivírus não encontrou e ainda limpou 5GB de arquivos temporários."</p>
-                    <p class="testimonial-author">- Ana Costa, Estudante</p>
-                </div>
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Uso no meu escritório com 10 computadores. Economizou horas de trabalho
-                        técnico e mantém todos os sistemas funcionando sem problemas."</p>
-                    <p class="testimonial-author">- Ricardo Oliveira, Gerente de TI</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    // Tamanho aleatório
+                    const size = Math.random() * 10 + 5;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
 
-    <!-- Download Section -->
-    <section class="download" id="download">
-        <div class="container">
-            <h2>Pronto para Otimizar seu Windows?</h2>
-            <p>Baixe agora o MRT e tenha um sistema mais rápido, seguro e estável. Totalmente compatível com Windows 10
-                e 11.</p>
+                    // Posição aleatória
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
 
-            <div class="download-buttons">
-                <a href="#" class="btn-primary">
-                    <i class="fas fa-download"></i> Baixar Versão 2.1 (45 MB)
-                </a>
-                <a href="#" class="btn-secondary">
-                    <i class="fas fa-book"></i> Ver Manual do Usuário
-                </a>
-            </div>
+                    // Atraso de animação aleatório
+                    particle.style.animationDelay = `${Math.random() * 15}s`;
 
-            <p style="margin-top: 2.5rem; font-size: 0.9rem; color: var(--pink-light);">
-                <i class="fas fa-info-circle"></i> Requisitos: Windows 10/11, 2GB de RAM, 100MB de espaço livre
-            </p>
-        </div>
-    </section>
+                    // Opacidade aleatória
+                    particle.style.opacity = Math.random() * 0.3 + 0.1;
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>MRT</h3>
-                    <p>Windows Repair Tool</p>
-                    <p>A solução completa para reparar, proteger e otimizar seu sistema Windows.</p>
-                </div>
+                    // Gradiente aleatório
+                    if (Math.random() > 0.5) {
+                        particle.style.background = 'linear-gradient(135deg, var(--accent), var(--neon-blue))';
+                    }
 
-                <div class="footer-section">
-                    <h3>Links Rápidos</h3>
-                    <a href="#">Home</a>
-                    <a href="#">Recursos</a>
-                    <a href="#download">Download</a>
-                    <a href="#">Suporte</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Contato</h3>
-                    <p>suporte@mrt-tool.com</p>
-                    <p>FAQ & Central de Ajuda</p>
-                    <p>Política de Privacidade</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Compatibilidade</h3>
-                    <p>Windows 10</p>
-                    <p>Windows 11</p>
-                    <p>Windows Server 2019+</p>
-                </div>
-            </div>
-
-            <div class="copyright">
-                <p>&copy; 2023 MRT - Windows Repair Tool. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Efeito de rolagem suave para links âncora
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                    particlesContainer.appendChild(particle);
                 }
-            });
-        });
+            }
 
-        // Efeito de destaque nos cards de recursos
-        document.addEventListener('DOMContentLoaded', function () {
-            const featureCards = document.querySelectorAll('.feature-card');
-            const stepItems = document.querySelectorAll('.step');
-            
-            featureCards.forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    this.style.transform = 'translateY(-12px)';
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
             // Efeito de digitação no terminal
-            const terminalLines = document.querySelectorAll('.terminal-line');
-            terminalLines.forEach((line, index) => {
-                line.style.opacity = '0';
-                setTimeout(() => {
-                    line.style.transition = 'opacity 0.5s ease';
-                    line.style.opacity = '1';
-                }, 300 * index);
+            function typeTerminalText() {
+                const lines = document.querySelectorAll('.terminal-line');
+                lines.forEach((line, index) => {
+                    const text = line.querySelector('.terminal-text');
+                    if (text) {
+                        const originalText = text.textContent;
+                        text.textContent = '';
+
+                        setTimeout(() => {
+                            let i = 0;
+                            const typeWriter = () => {
+                                if (i < originalText.length) {
+                                    text.textContent += originalText.charAt(i);
+                                    i++;
+                                    setTimeout(typeWriter, 30);
+                                }
+                            };
+                            typeWriter();
+                        }, index * 1000);
+                    }
+                });
+            }
+
+            // Efeito parallax no scroll
+            function initParallax() {
+                const hero = document.querySelector('.hero');
+                const demoContainer = document.querySelector('.demo-container');
+
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.5;
+
+                    if (demoContainer) {
+                        demoContainer.style.transform = `translateY(${rate}px) rotateY(-15deg) rotateX(5deg)`;
+                    }
+                });
+            }
+
+            // Inicializar quando o DOM estiver carregado
+            document.addEventListener('DOMContentLoaded', () => {
+                createParticles();
+                typeTerminalText();
+                initParallax();
+
+                // Efeito hover nas estatísticas
+                const stats = document.querySelectorAll('.stat');
+                stats.forEach(stat => {
+                    stat.addEventListener('mouseenter', () => {
+                        stat.style.transform = 'scale(1.1)';
+                    });
+                    stat.addEventListener('mouseleave', () => {
+                        stat.style.transform = 'scale(1)';
+                    });
+                });
+            });
+
+            // Animar números das estatísticas
+            function animateStats() {
+                const statNumbers = document.querySelectorAll('.stat-number');
+
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.textContent);
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = current.toFixed(current % 1 !== 0 ? 1 : 0) +
+                            (stat.textContent.includes('%') ? '%' :
+                                stat.textContent.includes('x') ? 'x' :
+                                    stat.textContent.includes('M') ? 'M+' : '');
+                    }, 40);
+                });
+            }
+
+            // Iniciar animação das estatísticas quando visível
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Observar seção hero
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                observer.observe(heroSection);
+            }
+        </script>
+    </body>
+
+</html>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Recursos Principais</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-medical"></i>
+                </div>
+                <h3>Reparação de Arquivos</h3>
+                <p>Corrige automaticamente arquivos do Windows corrompidos ou quebrados, restaurando a estabilidade
+                    do sistema e prevenindo erros críticos.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Detecção de Malware</h3>
+                <p>Verifica seu sistema em busca de arquivos maliciosos, spyware, adware e outras ameaças à
+                    segurança, mantendo seus dados protegidos.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-broom"></i>
+                </div>
+                <h3>Limpeza Inteligente</h3>
+                <p>Remove arquivos temporários, cache desnecessário e lixo do sistema para liberar espaço em disco e
+                    melhorar o desempenho do PC.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How-to Section -->
+<section class="how-to">
+    <div class="container">
+        <h2 class="section-title">Como Funciona</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Baixe e Instale</h3>
+                    <p>Faça o download do MRT e execute o instalador. O processo é rápido e não requer configurações
+                        complexas.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Escaneamento Completo</h3>
+                    <p>Inicie o MRT e clique em "Verificar Sistema". A ferramenta analisará arquivos corrompidos,
+                        malware e itens para limpeza.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Reparação Automática</h3>
+                    <p>O MRT corrigirá automaticamente os problemas encontrados. Você pode revisar as ações antes de
+                        confirmar.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Sistema Otimizado</h3>
+                    <p>Após a conclusão, seu Windows estará mais estável, seguro e com melhor desempenho.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">O Que Dizem Nossos Usuários</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"O MRT salvou meu computador! Depois de várias telas azuis, ele reparou
+                    os arquivos do sistema e agora meu PC funciona perfeitamente."</p>
+                <p class="testimonial-author">- Carlos Silva, Analista de Sistemas</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Finalmente uma ferramenta completa. Detectou um malware que meu
+                    antivírus não encontrou e ainda limpou 5GB de arquivos temporários."</p>
+                <p class="testimonial-author">- Ana Costa, Estudante</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Uso no meu escritório com 10 computadores. Economizou horas de trabalho
+                    técnico e mantém todos os sistemas funcionando sem problemas."</p>
+                <p class="testimonial-author">- Ricardo Oliveira, Gerente de TI</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download Section -->
+<section class="download" id="download">
+    <div class="container">
+        <h2>Pronto para Otimizar seu Windows?</h2>
+        <p>Baixe agora o MRT e tenha um sistema mais rápido, seguro e estável. Totalmente compatível com Windows 10
+            e 11.</p>
+
+        <div class="download-buttons">
+            <a href="#" class="btn-primary">
+                <i class="fas fa-download"></i> Baixar Versão 2.1 (45 MB)
+            </a>
+            <a href="#" class="btn-secondary">
+                <i class="fas fa-book"></i> Ver Manual do Usuário
+            </a>
+        </div>
+
+        <p style="margin-top: 2.5rem; font-size: 0.9rem; color: var(--pink-light);">
+            <i class="fas fa-info-circle"></i> Requisitos: Windows 10/11, 2GB de RAM, 100MB de espaço livre
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MRT</h3>
+                <p>Windows Repair Tool</p>
+                <p>A solução completa para reparar, proteger e otimizar seu sistema Windows.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="#">Home</a>
+                <a href="#">Recursos</a>
+                <a href="#download">Download</a>
+                <a href="#">Suporte</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>suporte@mrt-tool.com</p>
+                <p>FAQ & Central de Ajuda</p>
+                <p>Política de Privacidade</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Compatibilidade</h3>
+                <p>Windows 10</p>
+                <p>Windows 11</p>
+                <p>Windows Server 2019+</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 MRT - Windows Repair Tool. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Efeito de rolagem suave para links âncora
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Efeito de destaque nos cards de recursos
+    document.addEventListener('DOMContentLoaded', function () {
+        const featureCards = document.querySelectorAll('.feature-card');
+        const stepItems = document.querySelectorAll('.step');
+
+        featureCards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-12px)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
             });
         });
-    </script>
+
+        // Efeito de digitação no terminal
+        const terminalLines = document.querySelectorAll('.terminal-line');
+        terminalLines.forEach((line, index) => {
+            line.style.opacity = '0';
+            setTimeout(() => {
+                line.style.transition = 'opacity 0.5s ease';
+                line.style.opacity = '1';
+            }, 300 * index);
+        });
+    });
+</script>
 </body>
 
 </html>
