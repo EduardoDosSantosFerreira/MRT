@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,48 +8,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0066cc;
-            --primary-dark: #004c99;
-            --secondary: #00a8e8;
-            --danger: #dc3545;
-            --success: #28a745;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --gray: #6c757d;
-            --border-radius: 8px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --black: #121212;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2d2d2d;
+            --light-gray: #3d3d3d;
+            --lighter-gray: #4d4d4d;
+            --pale-gray: #e8e8e8;
+            
+            --pink-primary: #e91e63;
+            --pink-dark: #c2185b;
+            --pink-light: #f48fb1;
+            --pink-pale: #fce4ec;
+            
+            --accent: #bb86fc;
+            --accent-light: #d1b3ff;
+            
+            --border-radius: 10px;
+            --shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            color: var(--dark);
+            color: var(--pale-gray);
             line-height: 1.6;
-            background-color: #f5f7fa;
+            background-color: var(--black);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(233, 30, 99, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(233, 30, 99, 0.05) 0%, transparent 20%);
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 0;
+            background-color: var(--dark-gray);
+            padding: 1.5rem 0;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid var(--light-gray);
+            box-shadow: var(--shadow);
         }
-        
+
         header::before {
             content: "";
             position: absolute;
@@ -56,10 +70,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: cover;
+            background-image: linear-gradient(90deg, transparent 65%, rgba(233, 30, 99, 0.1) 100%);
         }
-        
+
         .header-content {
             position: relative;
             z-index: 1;
@@ -68,124 +81,208 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
+
         .logo-icon {
-            font-size: 2.5rem;
-            background: rgba(255, 255, 255, 0.2);
+            font-size: 2.2rem;
+            background: var(--gradient);
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+            transition: var(--transition);
         }
-        
+
+        .logo:hover .logo-icon {
+            transform: rotate(15deg) scale(1.05);
+        }
+
         .logo-text h1 {
             font-size: 2.2rem;
             margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--pink-primary), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
         }
-        
+
         .logo-text p {
-            opacity: 0.9;
+            color: var(--lighter-gray);
             font-size: 1rem;
+            letter-spacing: 1px;
         }
-        
+
         .cta-button {
-            background-color: white;
-            color: var(--primary);
-            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 28px;
             border-radius: var(--border-radius);
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
             transition: var(--transition);
             box-shadow: var(--shadow);
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .cta-button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
         }
-        
+
+        .cta-button:hover::after {
+            left: 100%;
+        }
+
         /* Hero Section */
         .hero {
-            padding: 4rem 0;
+            padding: 5rem 0;
             text-align: center;
+            position: relative;
         }
-        
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(233, 30, 99, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
         .hero h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, var(--pink-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 1.5rem;
+            font-weight: 800;
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 2rem;
-            color: var(--gray);
+            margin: 0 auto 3rem;
+            color: var(--lighter-gray);
         }
-        
+
         .hero-image {
-            max-width: 800px;
+            max-width: 900px;
             margin: 2rem auto;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 1px solid var(--light-gray);
+            background-color: var(--dark-gray);
+            transition: var(--transition);
         }
-        
-        .hero-image img {
-            width: 100%;
-            display: block;
+
+        .hero-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
         }
-        
+
         /* Features Section */
         .features {
-            padding: 4rem 0;
-            background-color: white;
+            padding: 5rem 0;
+            background-color: var(--dark-gray);
+            position: relative;
         }
-        
+
+        .features::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--pink-primary), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 3rem;
+            font-weight: 700;
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        
+
         .feature-card {
-            background-color: var(--light);
-            padding: 2rem;
+            background-color: var(--medium-gray);
+            padding: 2.5rem 2rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-light);
             transition: var(--transition);
             text-align: center;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--pink-primary);
         }
-        
+
+        .feature-card:hover::before {
+            width: 8px;
+        }
+
         .feature-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--pink-primary);
             margin-bottom: 1.5rem;
-            background-color: rgba(0, 102, 204, 0.1);
+            background-color: rgba(233, 30, 99, 0.1);
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -193,117 +290,183 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
+            transition: var(--transition);
         }
-        
+
+        .feature-card:hover .feature-icon {
+            background-color: rgba(233, 30, 99, 0.2);
+            transform: scale(1.1);
+        }
+
         .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: white;
         }
-        
+
+        .feature-card p {
+            color: var(--lighter-gray);
+        }
+
         /* How-to Section */
         .how-to {
-            padding: 4rem 0;
+            padding: 5rem 0;
+            background-color: var(--black);
         }
-        
+
         .steps {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
-        
+
         .step {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 2rem;
-            background-color: white;
-            padding: 1.5rem;
+            background-color: var(--dark-gray);
+            padding: 2rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-light);
+            border-left: 5px solid transparent;
+            transition: var(--transition);
         }
-        
+
+        .step:hover {
+            border-left-color: var(--pink-primary);
+            transform: translateX(5px);
+        }
+
         .step-number {
-            background-color: var(--primary);
+            background: var(--gradient);
             color: white;
             font-weight: bold;
             font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            margin-right: 1.5rem;
+            margin-right: 2rem;
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
         }
-        
+
         .step-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
-            color: var(--dark);
+            color: white;
         }
-        
+
+        .step-content p {
+            color: var(--lighter-gray);
+        }
+
         /* Testimonials */
         .testimonials {
-            padding: 4rem 0;
-            background-color: white;
+            padding: 5rem 0;
+            background-color: var(--dark-gray);
         }
-        
+
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        
+
         .testimonial-card {
-            background-color: var(--light);
-            padding: 1.5rem;
+            background-color: var(--medium-gray);
+            padding: 2rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-light);
+            border-top: 4px solid var(--pink-primary);
+            transition: var(--transition);
+            position: relative;
         }
-        
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .testimonial-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--pink-primary);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-family: serif;
+        }
+
         .testimonial-text {
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--pale-gray);
+            line-height: 1.7;
         }
-        
+
         .testimonial-author {
             font-weight: bold;
-            color: var(--primary);
+            color: var(--pink-light);
+            font-size: 1.1rem;
         }
-        
+
         /* Download Section */
         .download {
-            padding: 4rem 0;
+            padding: 5rem 0;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--dark-gray), var(--medium-gray));
             color: white;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .download::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(233, 30, 99, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(233, 30, 99, 0.1) 0%, transparent 30%);
+        }
+
         .download h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            background: linear-gradient(90deg, white, var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
         }
-        
+
         .download p {
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
+            margin: 0 auto 2.5rem;
+            color: var(--pale-gray);
+            position: relative;
         }
-        
+
         .download-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
-        
+
         .btn-primary {
-            background-color: white;
-            color: var(--primary);
-            padding: 15px 35px;
+            background: var(--gradient);
+            color: white;
+            padding: 18px 40px;
             border-radius: var(--border-radius);
             font-weight: 600;
             font-size: 1.2rem;
@@ -311,14 +474,17 @@
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
         }
-        
+
         .btn-secondary {
             background-color: transparent;
             color: white;
-            border: 2px solid white;
-            padding: 15px 35px;
+            border: 2px solid var(--pink-primary);
+            padding: 18px 40px;
             border-radius: var(--border-radius);
             font-weight: 600;
             font-size: 1.2rem;
@@ -326,56 +492,144 @@
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            box-shadow: var(--shadow-light);
         }
-        
-        .btn-primary:hover, .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
         }
-        
+
+        .btn-secondary:hover {
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--black);
             color: white;
-            padding: 3rem 0 1.5rem;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--medium-gray);
         }
-        
+
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
-        
+
         .footer-section h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
-            color: var(--secondary);
+            color: var(--pink-light);
+            position: relative;
+            padding-bottom: 10px;
         }
-        
-        .footer-section p, .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0.5rem;
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--lighter-gray);
+            margin-bottom: 0.8rem;
             display: block;
             text-decoration: none;
             transition: var(--transition);
         }
-        
+
         .footer-section a:hover {
-            color: white;
-            padding-left: 5px;
+            color: var(--pink-light);
+            padding-left: 8px;
         }
-        
+
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
+            padding-top: 2rem;
+            border-top: 1px solid var(--medium-gray);
+            color: var(--lighter-gray);
             font-size: 0.9rem;
         }
-        
+
+        /* Terminal Style for Hero */
+        .terminal {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            padding: 2rem;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .terminal-title {
+            color: var(--pink-primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .control.close {
+            background-color: #ff5f56;
+        }
+
+        .control.minimize {
+            background-color: #ffbd2e;
+        }
+
+        .control.maximize {
+            background-color: #27ca3f;
+        }
+
+        .terminal-line {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .terminal-prompt {
+            color: var(--pink-primary);
+            font-weight: bold;
+        }
+
+        .terminal-text {
+            color: #a0a0a0;
+        }
+
+        .terminal-success {
+            color: #68d391;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -383,30 +637,41 @@
                 text-align: center;
                 gap: 1.5rem;
             }
-            
+
             .logo {
                 justify-content: center;
             }
-            
+
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-            
+
             .hero p {
                 font-size: 1.1rem;
             }
-            
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+
             .download-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .footer-content {
                 flex-direction: column;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -432,30 +697,42 @@
     <section class="hero">
         <div class="container">
             <h2>O Reparador Definitivo para o Windows</h2>
-            <p>O MRT é a solução completa para reparar arquivos corrompidos do Windows, detectar ameaças de segurança e otimizar o desempenho do seu sistema com uma limpeza inteligente.</p>
-            
+            <p>O MRT é a solução completa para reparar arquivos corrompidos do Windows, detectar ameaças de segurança e
+                otimizar o desempenho do seu sistema com uma limpeza inteligente.</p>
+
             <div class="hero-image">
-                <div style="background-color: #2d3748; color: white; padding: 2rem; text-align: left; font-family: monospace;">
-                    <div style="margin-bottom: 1rem;">
-                        <span style="color: #4fd1c7;">MRT</span>
-                        <span style="color: #a0aec0;">> </span>
-                        <span>scan system</span>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-title">MRT - Windows Repair Tool</div>
+                        <div class="terminal-controls">
+                            <div class="control close"></div>
+                            <div class="control minimize"></div>
+                            <div class="control maximize"></div>
+                        </div>
                     </div>
-                    <div style="margin-bottom: 1rem; padding-left: 1rem;">
-                        <span style="color: #68d391;">✓</span>
-                        <span> Verificando arquivos do sistema... [100%]</span>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">MRT></span>
+                        <span class="terminal-text"> scan system --full</span>
                     </div>
-                    <div style="margin-bottom: 1rem; padding-left: 1rem;">
-                        <span style="color: #68d391;">✓</span>
-                        <span> Reparando arquivos corrompidos... [15 arquivos reparados]</span>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓</span>
+                        <span class="terminal-text"> Verificando arquivos do sistema... [100%]</span>
                     </div>
-                    <div style="margin-bottom: 1rem; padding-left: 1rem;">
-                        <span style="color: #68d391;">✓</span>
-                        <span> Varredura de malware... [Nenhuma ameaça encontrada]</span>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓</span>
+                        <span class="terminal-text"> Reparando arquivos corrompidos... [15 arquivos reparados]</span>
                     </div>
-                    <div style="padding-left: 1rem;">
-                        <span style="color: #68d391;">✓</span>
-                        <span> Limpeza de sistema... [2.3 GB liberados]</span>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓</span>
+                        <span class="terminal-text"> Varredura de malware... [Nenhuma ameaça encontrada]</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓</span>
+                        <span class="terminal-text"> Limpeza de sistema... [2.3 GB liberados]</span>
+                    </div>
+                    <div class="terminal-line" style="margin-top: 1.5rem;">
+                        <span class="terminal-prompt">MRT></span>
+                        <span class="terminal-text" style="color: var(--pink-light);"> Sistema otimizado com sucesso!</span>
                     </div>
                 </div>
             </div>
@@ -472,23 +749,26 @@
                         <i class="fas fa-file-medical"></i>
                     </div>
                     <h3>Reparação de Arquivos</h3>
-                    <p>Corrige automaticamente arquivos do Windows corrompidos ou quebrados, restaurando a estabilidade do sistema e prevenindo erros críticos.</p>
+                    <p>Corrige automaticamente arquivos do Windows corrompidos ou quebrados, restaurando a estabilidade
+                        do sistema e prevenindo erros críticos.</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Detecção de Malware</h3>
-                    <p>Verifica seu sistema em busca de arquivos maliciosos, spyware, adware e outras ameaças à segurança, mantendo seus dados protegidos.</p>
+                    <p>Verifica seu sistema em busca de arquivos maliciosos, spyware, adware e outras ameaças à
+                        segurança, mantendo seus dados protegidos.</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-broom"></i>
                     </div>
                     <h3>Limpeza Inteligente</h3>
-                    <p>Remove arquivos temporários, cache desnecessário e lixo do sistema para liberar espaço em disco e melhorar o desempenho do PC.</p>
+                    <p>Remove arquivos temporários, cache desnecessário e lixo do sistema para liberar espaço em disco e
+                        melhorar o desempenho do PC.</p>
                 </div>
             </div>
         </div>
@@ -503,26 +783,29 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Baixe e Instale</h3>
-                        <p>Faça o download do MRT e execute o instalador. O processo é rápido e não requer configurações complexas.</p>
+                        <p>Faça o download do MRT e execute o instalador. O processo é rápido e não requer configurações
+                            complexas.</p>
                     </div>
                 </div>
-                
+
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Escaneamento Completo</h3>
-                        <p>Inicie o MRT e clique em "Verificar Sistema". A ferramenta analisará arquivos corrompidos, malware e itens para limpeza.</p>
+                        <p>Inicie o MRT e clique em "Verificar Sistema". A ferramenta analisará arquivos corrompidos,
+                            malware e itens para limpeza.</p>
                     </div>
                 </div>
-                
+
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Reparação Automática</h3>
-                        <p>O MRT corrigirá automaticamente os problemas encontrados. Você pode revisar as ações antes de confirmar.</p>
+                        <p>O MRT corrigirá automaticamente os problemas encontrados. Você pode revisar as ações antes de
+                            confirmar.</p>
                     </div>
                 </div>
-                
+
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
@@ -540,17 +823,20 @@
             <h2 class="section-title">O Que Dizem Nossos Usuários</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"O MRT salvou meu computador! Depois de várias telas azuis, ele reparou os arquivos do sistema e agora meu PC funciona perfeitamente."</p>
+                    <p class="testimonial-text">"O MRT salvou meu computador! Depois de várias telas azuis, ele reparou
+                        os arquivos do sistema e agora meu PC funciona perfeitamente."</p>
                     <p class="testimonial-author">- Carlos Silva, Analista de Sistemas</p>
                 </div>
-                
+
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Finalmente uma ferramenta completa. Detectou um malware que meu antivírus não encontrou e ainda limpou 5GB de arquivos temporários."</p>
+                    <p class="testimonial-text">"Finalmente uma ferramenta completa. Detectou um malware que meu
+                        antivírus não encontrou e ainda limpou 5GB de arquivos temporários."</p>
                     <p class="testimonial-author">- Ana Costa, Estudante</p>
                 </div>
-                
+
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Uso no meu escritório com 10 computadores. Economizou horas de trabalho técnico e mantém todos os sistemas funcionando sem problemas."</p>
+                    <p class="testimonial-text">"Uso no meu escritório com 10 computadores. Economizou horas de trabalho
+                        técnico e mantém todos os sistemas funcionando sem problemas."</p>
                     <p class="testimonial-author">- Ricardo Oliveira, Gerente de TI</p>
                 </div>
             </div>
@@ -561,8 +847,9 @@
     <section class="download" id="download">
         <div class="container">
             <h2>Pronto para Otimizar seu Windows?</h2>
-            <p>Baixe agora o MRT e tenha um sistema mais rápido, seguro e estável. Totalmente compatível com Windows 10 e 11.</p>
-            
+            <p>Baixe agora o MRT e tenha um sistema mais rápido, seguro e estável. Totalmente compatível com Windows 10
+                e 11.</p>
+
             <div class="download-buttons">
                 <a href="#" class="btn-primary">
                     <i class="fas fa-download"></i> Baixar Versão 2.1 (45 MB)
@@ -571,8 +858,10 @@
                     <i class="fas fa-book"></i> Ver Manual do Usuário
                 </a>
             </div>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">Requisitos: Windows 10/11, 2GB de RAM, 100MB de espaço livre</p>
+
+            <p style="margin-top: 2.5rem; font-size: 0.9rem; color: var(--pink-light);">
+                <i class="fas fa-info-circle"></i> Requisitos: Windows 10/11, 2GB de RAM, 100MB de espaço livre
+            </p>
         </div>
     </section>
 
@@ -585,22 +874,22 @@
                     <p>Windows Repair Tool</p>
                     <p>A solução completa para reparar, proteger e otimizar seu sistema Windows.</p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
                     <a href="#">Home</a>
                     <a href="#">Recursos</a>
-                    <a href="#">Download</a>
+                    <a href="#download">Download</a>
                     <a href="#">Suporte</a>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Contato</h3>
                     <p>suporte@mrt-tool.com</p>
                     <p>FAQ & Central de Ajuda</p>
                     <p>Política de Privacidade</p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Compatibilidade</h3>
                     <p>Windows 10</p>
@@ -608,7 +897,7 @@
                     <p>Windows Server 2019+</p>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2023 MRT - Windows Repair Tool. Todos os direitos reservados.</p>
             </div>
@@ -618,14 +907,14 @@
     <script>
         // Efeito de rolagem suave para links âncora
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
+                if (targetId === '#') return;
+
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
@@ -633,22 +922,33 @@
                 }
             });
         });
-        
-        // Efeito de contador para estatísticas (apenas visual)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Simulação de contadores nos recursos
+
+        // Efeito de destaque nos cards de recursos
+        document.addEventListener('DOMContentLoaded', function () {
             const featureCards = document.querySelectorAll('.feature-card');
+            const stepItems = document.querySelectorAll('.step');
             
             featureCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-12px)';
                 });
-                
-                card.addEventListener('mouseleave', function() {
+
+                card.addEventListener('mouseleave', function () {
                     this.style.transform = 'translateY(0)';
                 });
+            });
+            
+            // Efeito de digitação no terminal
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            terminalLines.forEach((line, index) => {
+                line.style.opacity = '0';
+                setTimeout(() => {
+                    line.style.transition = 'opacity 0.5s ease';
+                    line.style.opacity = '1';
+                }, 300 * index);
             });
         });
     </script>
 </body>
+
 </html>
