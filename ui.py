@@ -111,7 +111,7 @@ class SecurityTool(QWidget):
                 logo_icon.setPixmap(pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation))
             else:
                 # Se a imagem não carregar, use texto como fallback
-                logo_icon.setText("MSP")
+                logo_icon.setText("MRT")
                 logo_icon.setStyleSheet("""
                     color: white;
                     font-size: 36px;
@@ -119,7 +119,7 @@ class SecurityTool(QWidget):
                 """)
         else:
             # Se o arquivo não existir, use texto
-            logo_icon.setText("MSP")
+            logo_icon.setText("MRT")
             logo_icon.setStyleSheet("""
                 color: white;
                 font-size: 36px;
@@ -260,7 +260,7 @@ class SecurityTool(QWidget):
         reply = QMessageBox.question(
             self,
             "Confirm Exit",
-            "Are you sure you want to exit MSP?",
+            "Are you sure you want to exit MRT?",
             QMessageBox.Yes | QMessageBox.No,
             QMessageBox.No
         )
